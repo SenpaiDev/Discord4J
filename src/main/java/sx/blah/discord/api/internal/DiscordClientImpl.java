@@ -306,6 +306,30 @@ public final class DiscordClientImpl implements IDiscordClient {
 		changeAccountInfo(Optional.of(username), Optional.empty(), Optional.empty(), null);
 	}
 
+
+
+	@Override
+	public void setGame(String Game) {
+
+				// the false are for idle
+		ws.send(DiscordUtils.GSON.toJson(new PresenceUpdateRequest(false ? System.currentTimeMillis() : null, Optional.ofNullable(Game).orElse(null))));
+
+		((User) getOurUser()).setPresence(false ? Presences.IDLE : Presences.ONLINE);
+		((User) getOurUser()).setGame(Optional.ofNullable(Game));
+
+
+
+	}
+
+	@Override
+	public void setIdleGame(String Game) {
+		// the true are for idle
+		ws.send(DiscordUtils.GSON.toJson(new PresenceUpdateRequest(true ? System.currentTimeMillis() : null, Optional.ofNullable(Game).orElse(null))));
+		((User) getOurUser()).setPresence(Presences.IDLE);
+		((User) getOurUser()).setGame(Optional.ofNullable(Game));
+
+	}
+
 	@Override
 	public void changeEmail(String email) throws DiscordException, HTTP429Exception {
 		changeAccountInfo(Optional.empty(), Optional.of(email), Optional.empty(), null);

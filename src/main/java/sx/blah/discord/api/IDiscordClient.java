@@ -72,6 +72,9 @@ public interface IDiscordClient {
 	 */
 	void changeUsername(String username) throws DiscordException, HTTP429Exception;
 
+	void setGame(String Game);
+	void setIdleGame(String Game);
+
 	/**
 	 * Changes this client's account's email.
 	 *

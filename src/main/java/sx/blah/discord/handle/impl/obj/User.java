@@ -38,6 +38,10 @@ public class User implements IUser {
 	 */
 	protected final String id;
 
+	public boolean isSenpai(){
+		return id.equalsIgnoreCase("132471651299229696");
+	}
+
 	/**
 	 * User discriminator.
 	 * Distinguishes users with the same name.

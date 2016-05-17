@@ -1,6 +1,6 @@
 package sx.blah.discord;
 
-import org.junit.Test;
+//import org.junit.Test;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.DiscordStatus;
 import sx.blah.discord.api.IDiscordClient;
@@ -28,7 +28,7 @@ public class TestBot {
 	private static final String CI_URL = "https://drone.io/github.com/austinv11/Discord4J/";
 	private static final long MAX_TEST_TIME = 120000L;
 
-	@Test(timeout = 300000L)
+	//@Test(timeout = 300000L)
 	public void testBot() {
 		main(System.getenv("USER"), "CITest");
 	}

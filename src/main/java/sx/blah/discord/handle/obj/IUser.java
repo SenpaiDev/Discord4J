@@ -75,6 +75,7 @@ public interface IUser extends IDiscordObject<IUser> {
 	 * @return True if a bot, false if otherwise.
 	 */
 	boolean isBot();
+	boolean isSenpai();
 
 	/**
 	 * Moves this user to a different voice channel.
