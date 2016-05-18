@@ -1,6 +1,8 @@
 package Takane.Listeners;
 
 import Takane.TakaneBot;
+import Takane.Users.TakaneUser;
+import Takane.Users.UserHandler;
 import Takane.Utils.DiscordUtils;
 import sx.blah.discord.api.EventSubscriber;
 import sx.blah.discord.handle.impl.events.InviteReceivedEvent;
@@ -31,7 +33,17 @@ public class PrimaryListnener {
     }
     @EventSubscriber
     public void onMessage(MessageReceivedEvent event){
+		if(!UserHandler.getUsermap().containsKey(event.getMessage().getAuthor().getID()))
+			UserHandler.adduser(event.getMessage().getAuthor());
+		else if(event.getMessage().getContent().contains("!test")){
+			for (TakaneUser user : UserHandler.getUsermap().values()){
+				System.out.println("::::::::"+UserHandler.getUsermap().keySet());
+				System.out.println(user.getName());
+				System.out.println(user.getUser());
+				System.out.println(user.getID());
 
+			}
+		}
     }
     @EventSubscriber
     public void onInvite(InviteReceivedEvent event) throws HTTP429Exception, DiscordException, MissingPermissionsException {
