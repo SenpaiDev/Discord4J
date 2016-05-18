@@ -16,6 +16,10 @@ public class UserHandler {
 		Usermap.put(user.getID(), new TakaneUser(user));
 	}
 
+	public static TakaneUser GetUser(IUser user){
+		return Usermap.get(user.getID());
+	}
+
 	public static Map<String, TakaneUser> getUsermap() {
 		return Usermap;
 	}

@@ -1,7 +1,7 @@
 package Takane.Listeners;
 
+import Takane.Users.Lolinator;
 import Takane.TakaneBot;
-import Takane.Users.TakaneUser;
 import Takane.Users.UserHandler;
 import Takane.Utils.DiscordUtils;
 import sx.blah.discord.api.EventSubscriber;
@@ -14,9 +14,7 @@ import sx.blah.discord.util.DiscordException;
 import sx.blah.discord.util.HTTP429Exception;
 import sx.blah.discord.util.MissingPermissionsException;
 
-import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Optional;
 
 /**
  * Created by frostbyte on 5/17/16.
@@ -35,14 +33,8 @@ public class PrimaryListnener {
     public void onMessage(MessageReceivedEvent event){
 		if(!UserHandler.getUsermap().containsKey(event.getMessage().getAuthor().getID()))
 			UserHandler.adduser(event.getMessage().getAuthor());
-		else if(event.getMessage().getContent().contains("!test")){
-			for (TakaneUser user : UserHandler.getUsermap().values()){
-				System.out.println("::::::::"+UserHandler.getUsermap().keySet());
-				System.out.println(user.getName());
-				System.out.println(user.getUser());
-				System.out.println(user.getID());
-
-			}
+		if(event.getMessage().getContent().contains("!guess") && UserHandler.getUsermap().containsKey(event.getMessage().getAuthor())){
+			Lolinator.StartSession(event.getMessage().getAuthor(), event.getMessage());
 		}
     }
     @EventSubscriber

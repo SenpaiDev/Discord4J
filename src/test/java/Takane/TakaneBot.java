@@ -1,12 +1,10 @@
 package Takane;
 
 import Takane.Listeners.PrimaryListnener;
+import Takane.Users.Lolinator;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
-import sx.blah.discord.handle.obj.Presences;
 import sx.blah.discord.util.DiscordException;
-
-import java.util.Optional;
 
 /**
  * Created by frostbyte on 5/17/16.
@@ -18,7 +16,7 @@ public class TakaneBot {
         try {
             client = clientBuilder.withLogin(args[0], args[1]).login();
             client.getDispatcher().registerListener(new PrimaryListnener());
-
+			Lolinator.Init();
 
 
         } catch (DiscordException e) {
